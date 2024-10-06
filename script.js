@@ -19,4 +19,7 @@ themeSwitch.addEventListener('change', function() {
         localStorage.setItem('theme', 'dark-mode');
     } else {
         document.body.classList.remove('dark-mode');
-        document.body.classList
+        document.body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light-mode');
+    }
+});
