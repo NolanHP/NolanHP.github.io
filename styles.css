@@ -135,10 +135,10 @@ button:hover, .card a:hover {
 
 /* Dark Mode Colors */
 .dark-mode {
-    --background-color: #121212;
-    --text-color: #e0e0e0;  
-    --accent-color: #ff9800;
-    --header-background-color: #1f1f1f;
+    --background-color: #121212; /* Dark background */
+    --text-color: #e0e0e0;  /* Light text color */
+    --accent-color: #ff9800; /* Accent color */
+    --header-background-color: #1f1f1f; /* Darker header background */
 }
 
 .dark-mode body {
@@ -147,7 +147,7 @@ button:hover, .card a:hover {
 }
 
 .dark-mode header, .dark-mode footer, .dark-mode section {
-    background-color: var(--header-background-color);
+    background-color: var(--header-background-color); /* Use darker background */
 }
 
 .dark-mode nav ul li a {
