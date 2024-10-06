@@ -1,5 +1,6 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #121212; /* Dark background */
@@ -26,14 +27,15 @@ nav ul li {
 nav ul li a {
     color: #f0f0f0; /* Light text color for links */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    text-decoration: underline; /* Optional: add hover effect */
+    color: #ff9800; /* Highlight color on hover */
 }
 
 section {
-    padding: 20px;
+    padding: 60px 20px;
     margin: 20px;
     background-color: #1f1f1f; /* Dark section background */
     border-radius: 5px;
@@ -45,7 +47,111 @@ footer {
     padding: 10px;
     background-color: #1f1f1f; /* Dark footer background */
     color: #f0f0f0; /* Light text */
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
+}
+
+/* Hero Section Styles */
+#hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('your-background-image.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f0f0f0;
+}
+
+.hero-text {
+    text-align: center;
+    font-size: 2em;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero-text h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.5em;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Button Styles */
+button, .card a {
+    background-color: #ff9800;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover, .card a:hover {
+    background-color: #e67e22; /* Darken on hover */
+    transform: scale(1.05); /* Slight grow on hover */
+}
+
+/* Projects Section */
+#projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: #1f1f1f;
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card h3 {
+    color: #ff9800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5em;
+    }
+
+    #projects {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
+/* Icons */
+#contact a {
+    display: inline-block;
+    margin: 10px;
+    color: #f0f0f0;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+#contact a:hover {
+    color: #ff9800;
 }
