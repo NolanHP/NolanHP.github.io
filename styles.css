@@ -130,7 +130,7 @@ button:hover, .card a:hover {
 /* Dark Mode Colors */
 .dark-mode {
     --background-color: #121212;
-    --text-color: #f0f0f0;
+    --text-color: #e0e0e0;  /* Changed to a lighter gray for visibility */
     --accent-color: #ff9800;
     --header-background-color: #1f1f1f;
 }
@@ -150,7 +150,7 @@ button:hover, .card a:hover {
 
 .dark-mode button, .dark-mode .card a {
     background-color: var(--accent-color);
-    color: #ffffff;
+    color: #ffffff;  /* Keep text white for buttons */
 }
 
 /* Responsive Design */
