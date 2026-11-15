@@ -1,0 +1,29 @@
+{
+  "name": "Nolan Peloquin",
+  "titleSuffix": "Computer Science student",
+  "tagline": "Computer Science student at the University of Washington Bothell, applying for software engineering internships.",
+  "status": "Graduating June 2028",
+  "github": "NolanHP",
+  "linkedin": "",
+  "email": "",
+  "experience": [
+    {
+      "role": "Voting member, Student Technology Fee Committee",
+      "org": "UW Bothell",
+      "period": "Jan 2026 to Fall 2026",
+      "note": "Helped allocate an annual budget of more than $4M."
+    },
+    {
+      "role": "Data Specialist",
+      "org": "Pacific Capital Resource Group (remote)",
+      "period": "Aug 2024 to Sep 2025",
+      "note": "Mostly data entry and administrative work."
+    },
+    {
+      "role": "Tennis coach",
+      "org": "",
+      "period": "",
+      "note": ""
+    }
+  ]
+}
