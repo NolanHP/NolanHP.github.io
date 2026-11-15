@@ -72,6 +72,10 @@ async function loadProjects() {
   const projects = [];
   for (const f of files) {
     const rel = `content/projects/${f}`;
+    // The file name becomes the URL, and GitHub Pages URLs are case-sensitive.
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*\.md$/.test(f)) {
+      throw new ContentError(`${rel}: rename using only lowercase letters, numbers and hyphens, e.g. expense-splitter.md.`);
+    }
     const { data, body } = parseFile(await readFile(path.join(dir, f), 'utf8'), rel);
     validateProject(data, rel);
     projects.push({
@@ -103,8 +107,13 @@ export async function build() {
   const projects = await loadProjects();
   const notes = [];
 
-  site.hasResume = existsSync(path.join(PUBLIC, 'resume.pdf'));
-  if (!site.hasResume) notes.push('No public/resume.pdf, so the Resume link is hidden.');
+  site.url = (site.url || '').replace(/\/+$/, '');
+  // Exact-case check: GitHub Pages is case-sensitive, so Resume.pdf would 404 at /resume.pdf.
+  const publicFiles = existsSync(PUBLIC) ? await readdir(PUBLIC) : [];
+  site.hasResume = publicFiles.includes('resume.pdf');
+  const miscased = publicFiles.find((f) => f !== 'resume.pdf' && f.toLowerCase() === 'resume.pdf');
+  if (miscased) notes.push(`public/${miscased} must be named exactly resume.pdf (lowercase) to be linked.`);
+  else if (!site.hasResume) notes.push('No public/resume.pdf, so the Resume link is hidden.');
   if (!site.email) notes.push('"email" is empty in content/site.json, so the Email link is hidden.');
   if (!site.linkedin) notes.push('"linkedin" is empty in content/site.json, so the LinkedIn link is hidden.');
 

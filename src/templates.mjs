@@ -20,8 +20,11 @@ function contactLinks(site, root) {
   return links;
 }
 
-function layout({ site, root, title, description, body }) {
+// `pagePath` is the page's path on the live site ("/" or "/projects/slug/"). Pass null for
+// pages that shouldn't be indexed, like the 404 page.
+function layout({ site, root, pagePath, title, description, body }) {
   const links = contactLinks(site, root);
+  const pageUrl = site.url && pagePath ? site.url + pagePath : '';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -32,6 +35,12 @@ function layout({ site, root, title, description, body }) {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
+${
+  pageUrl
+    ? `<link rel="canonical" href="${esc(pageUrl)}">
+<meta property="og:url" content="${esc(pageUrl)}">`
+    : '<meta name="robots" content="noindex">'
+}
 <link rel="icon" href="${root}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +184,7 @@ export function homePage({ site, featured, rest, aboutHtml }) {
   </div>
 </section>`;
 
-  return layout({ site, root, title: `${site.name}, ${site.titleSuffix}`, description: site.tagline, body });
+  return layout({ site, root, pagePath: '/', title: `${site.name}, ${site.titleSuffix}`, description: site.tagline, body });
 }
 
 // ---------- project page ----------
@@ -200,7 +209,7 @@ export function projectPage({ site, project: p }) {
   </div>
 </article>`;
 
-  return layout({ site, root, title: `${p.title} | ${site.name}`, description: p.summary, body });
+  return layout({ site, root, pagePath: `/projects/${p.slug}/`, title: `${p.title} | ${site.name}`, description: p.summary, body });
 }
 
 // ---------- 404 ----------
@@ -211,5 +220,5 @@ export function notFoundPage({ site }) {
   <h1 class="h1-small">Page not found</h1>
   <p class="prose">That address doesn't match a page on this site. <a href="/">Go to the home page</a>.</p>
 </section>`;
-  return layout({ site, root: '/', title: `Page not found | ${site.name}`, description: 'Page not found.', body });
+  return layout({ site, root: '/', pagePath: null, title: `Page not found | ${site.name}`, description: 'Page not found.', body });
 }

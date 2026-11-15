@@ -30,7 +30,7 @@ The build prints a note for anything it's hiding (missing resume, empty email) a
 
 ## Add a project
 
-1. Copy `content/projects/_template.md` to a new file in the same folder. The file name becomes the URL: `expense-splitter.md` is published at `/projects/expense-splitter/`.
+1. Copy `content/projects/_template.md` to a new file in the same folder. Name it with lowercase letters, numbers and hyphens only; the file name becomes the URL: `expense-splitter.md` is published at `/projects/expense-splitter/`.
 2. Fill in the front matter (the block between the `---` lines):
 
    | Field | Required | Notes |
@@ -56,9 +56,10 @@ The three `sample-*.md` files are placeholders marked `sample: true`, which show
 
 - **About text:** edit `content/about.md`.
 - **Name, tagline, "Graduating June 2028" line:** edit `content/site.json`.
+- **Site address:** `url` in `content/site.json` is used for canonical and link-preview tags. Change it if you move to a custom domain.
 - **Email and LinkedIn:** fill in `email` and `linkedin` (full URL) in `content/site.json`. Each link appears once its value is set.
 - **Experience list:** edit the `experience` array in `content/site.json`. `org`, `period` and `note` can be left as `""`. The tennis coach entry currently has none of them filled in.
-- **Resume:** save your PDF as `public/resume.pdf`. The Resume links appear automatically; replace the file to update it.
+- **Resume:** save your PDF as `public/resume.pdf` (exactly that name, lowercase). The Resume links appear automatically; replace the file to update it.
 - **Images for write-ups:** put them in `public/images/` and reference them as `/images/file.png`.
 
 ## Deploy (GitHub Pages)
