@@ -1,0 +1,15 @@
+{
+  "name": "nolan-peloquin-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node dev.mjs"
+  },
+  "dependencies": {
+    "marked": "18.0.10"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
